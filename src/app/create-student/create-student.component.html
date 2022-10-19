@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <p>Nombre:
+      <input type="text" formControlName="nombre" required>
+      <span *ngIf="this.form.get('nombre')?.errors?.['required']">
+        (El nombre no puede quedar vacío)
+      </span>
+      <span *ngIf="this.form.get('nombre')?.errors?.['minlength']">
+        (Debe tener como mínimo 5 caracteres)
+      </span>
+    </p>
+    <select class="form-select" formControlName="curso" aria-label="Default select example">
+        <option [ngValue]="item" *ngFor="let item of curses">{{item.salon}} - {{item.grado}}</option>
+    </select>
+    <button type="submit" class="btn btn-primary" [disabled]="!this.form.valid">Crear</button>
+</form>

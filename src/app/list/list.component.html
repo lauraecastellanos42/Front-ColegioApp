@@ -1,0 +1,16 @@
+<table class="table table-condensed" *ngIf="columns && itemList">
+    <thead>
+        <tr>
+        <th *ngFor="let c of columns">
+            {{c.name}}
+        </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of itemList">
+        <td *ngFor="let c of columns">
+            {{ extractField(c.key, item) }}
+        </td>
+        </tr>
+    </tbody>
+</table>
